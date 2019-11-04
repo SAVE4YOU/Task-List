@@ -1,10 +1,6 @@
 package com.palchevskyi.testtask.controllers;
 
-import com.palchevskyi.testtask.domains.Task;
-import com.palchevskyi.testtask.domains.User;
-import com.palchevskyi.testtask.repos.TasksRepository;
-import com.palchevskyi.testtask.repos.UserRepository;
-import com.palchevskyi.testtask.services.MailSender;
+import com.palchevskyi.testtask.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,73 +11,31 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "main/{id}")
 public class TaskController {
     @Autowired
-    private MailSender mailSender;
-
-    @Autowired
-    private TasksRepository tasksRepository;
-
-    @Autowired
-    private UserRepository userRepository;
+    private TaskService taskService;
 
     @PostMapping
     public String editTask(@RequestParam String text, @PathVariable Long id, Model model) {
-        if (tasksRepository.findTaskById(id) == null) {
-            return "errorMsg";
-        }
-        Task task = tasksRepository.findTaskById(id);
-        model.addAttribute("task", task);
-        if (text != null && !text.isEmpty()) {
-            task.setText(text);
-        }
-        tasksRepository.save(task);
-        model.addAttribute("msg", "Saved!");
-        return "editPage";
+        return taskService.editTask(text, id, model);
     }
 
     @GetMapping
     public String showTask(@PathVariable Long id, Model model) {
-        if (tasksRepository.findTaskById(id) == null) {
-            return "errorMsg";
-        }
-        Task task = tasksRepository.findTaskById(id);
-        model.addAttribute("task", task);
-        return "editPage";
+        return taskService.showTask(id, model);
     }
 
     @Transactional
     @PostMapping("{delete")
     public String deleteTask(@PathVariable Long id, Model model) {
-        tasksRepository.deleteTaskById(id);
-        Iterable<Task> tasks = tasksRepository.findAll();
-        model.addAttribute("tasks", tasks);
-        return "redirect:/main";
+        return taskService.deleteTask(id, model);
     }
 
     @GetMapping("share")
     public String shareTaskView(@PathVariable Long id, Model model) {
-        Task task = tasksRepository.findTaskById(id);
-        model.addAttribute("task", task);
-        Iterable<User> users = userRepository.findAll();
-        model.addAttribute("users", users);
-        return "share";
+        return taskService.shareTaskView(id, model);
     }
 
     @PostMapping("/share")
     public String shareTask(@PathVariable Long id, @RequestParam String email, Model model) {
-        Iterable<User> users = userRepository.findAll();
-        Task task = tasksRepository.findTaskById(id);
-        User user = userRepository.findUserByEmail(email);
-
-        String message = String.format("Hello, can you please manage it afterwards?\nTask is :\"%s\".\nWith best regards, %s.",task.getText(), user.getUsername());
-        if (userRepository.findUserByEmail(email) != null) {
-            mailSender.send(email, "Manage task", message);
-            model.addAttribute("msg", "Email sent!");
-        } else if (email == null || email.isEmpty()) {
-            model.addAttribute("msg3", "Please enter email");
-        } else {
-            model.addAttribute("msg2", "User with this email does not exists!");
-        }
-
-        return "share";
+        return taskService.shareTask(id, email, model);
     }
 }
