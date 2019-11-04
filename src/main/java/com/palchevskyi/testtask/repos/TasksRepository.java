@@ -1,6 +1,6 @@
-package com.palchevskyi.testtask.Repos;
+package com.palchevskyi.testtask.repos;
 
-import com.palchevskyi.testtask.Domain.Task;
+import com.palchevskyi.testtask.domains.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TasksRepository extends JpaRepository<Task, Long> {

@@ -1,6 +1,6 @@
-package com.palchevskyi.testtask.Services;
+package com.palchevskyi.testtask.services;
 
-import com.palchevskyi.testtask.Repos.UserRepository;
+import com.palchevskyi.testtask.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

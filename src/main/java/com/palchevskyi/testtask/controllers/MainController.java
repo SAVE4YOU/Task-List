@@ -1,9 +1,8 @@
-package com.palchevskyi.testtask.Controllers;
+package com.palchevskyi.testtask.controllers;
 
-import com.palchevskyi.testtask.Domain.Task;
-import com.palchevskyi.testtask.Domain.User;
-import com.palchevskyi.testtask.Repos.TasksRepository;
-import com.palchevskyi.testtask.Repos.UserRepository;
+import com.palchevskyi.testtask.domains.Task;
+import com.palchevskyi.testtask.domains.User;
+import com.palchevskyi.testtask.repos.TasksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

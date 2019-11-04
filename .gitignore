@@ -1,2 +1,7 @@
-.iml
-.idea
+# IntelliJ:
+.mvn
+.idea/
+*.iml
+*.md
+# Maven:
+target/

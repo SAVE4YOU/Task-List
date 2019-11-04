@@ -1,7 +1,7 @@
-package com.palchevskyi.testtask.Controllers;
+package com.palchevskyi.testtask.controllers;
 
-import com.palchevskyi.testtask.Domain.User;
-import com.palchevskyi.testtask.Repos.UserRepository;
+import com.palchevskyi.testtask.domains.User;
+import com.palchevskyi.testtask.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

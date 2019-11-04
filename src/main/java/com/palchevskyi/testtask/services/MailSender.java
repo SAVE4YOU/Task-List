@@ -1,4 +1,4 @@
-package com.palchevskyi.testtask.Services;
+package com.palchevskyi.testtask.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

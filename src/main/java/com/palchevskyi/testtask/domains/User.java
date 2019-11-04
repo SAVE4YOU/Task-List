@@ -1,4 +1,4 @@
-package com.palchevskyi.testtask.Domain;
+package com.palchevskyi.testtask.domains;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

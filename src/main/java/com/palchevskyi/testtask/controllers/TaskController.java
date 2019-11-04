@@ -1,10 +1,10 @@
-package com.palchevskyi.testtask.Controllers;
+package com.palchevskyi.testtask.controllers;
 
-import com.palchevskyi.testtask.Domain.Task;
-import com.palchevskyi.testtask.Domain.User;
-import com.palchevskyi.testtask.Repos.TasksRepository;
-import com.palchevskyi.testtask.Repos.UserRepository;
-import com.palchevskyi.testtask.Services.MailSender;
+import com.palchevskyi.testtask.domains.Task;
+import com.palchevskyi.testtask.domains.User;
+import com.palchevskyi.testtask.repos.TasksRepository;
+import com.palchevskyi.testtask.repos.UserRepository;
+import com.palchevskyi.testtask.services.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
