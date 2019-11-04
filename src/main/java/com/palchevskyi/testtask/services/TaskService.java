@@ -81,7 +81,6 @@ public class TaskService {
     public String shareTask(Long id, String email, Model model) {
         Task task = taskRepository.findTaskById(id);
         User user = userRepository.findUserByEmail(email);
-
         if (userRepository.findUserByEmail(email) != null) {
             String message = String.format("Hello, can you please manage it afterwards?\nTask is :\"%s\".\nWith best regards, %s.",task.getText(), user.getUsername());
             mailSender.send(email, "Manage task", message);
